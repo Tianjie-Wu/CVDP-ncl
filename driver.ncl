@@ -57,6 +57,7 @@
   
   modular = "False"      ; True = Run only those CVDP scripts specified in modular_list.
                          ; False = Run all CVDP scripts (Default)
+  py_version = "3"       ; select python version to run python-based parallelization, only work when run_style = "parallel"
 
   modular_list = "pdo,aice.trends_timeseries,sst.indices"  ; When modular = "True" list the CVDP scripts that will be run. 
                                            ; Example: modular_list = "amoc,amo,pr.trends_timeseries"
@@ -123,7 +124,7 @@
      modular_list = modular_list+".ncl"                     ; add .ncl in to last script name
      if (run_style.eq."parallel") then
         modular_list = str_sub_str(modular_list,","," "+zp)
-        system(envvar_str+" python "+zp+"runTasks.py "+zp+modular_list)
+        system(envvar_str+" python "+zp+"runTasks"+py_version+".py "+zp+modular_list)
      else
         modular_list = str_sub_str(modular_list,","," "+ncl_exec+" "+zp)
         modular_list = str_sub_str(modular_list,".ncl",".ncl;")
@@ -134,7 +135,7 @@
      complete_list = complete_list+".ncl"                     ; add .ncl in to last script name
      if (run_style.eq."parallel") then
         complete_list = str_sub_str(complete_list,","," "+zp)
-        system(envvar_str+" python "+zp+"runTasks.py "+zp+complete_list)		   
+        system(envvar_str+" python "+zp+"runTasks"+py_version+".py "+zp+complete_list)		   
      else
         complete_list = str_sub_str(complete_list,","," "+ncl_exec+" "+zp)
         complete_list = str_sub_str(complete_list,".ncl",".ncl;")

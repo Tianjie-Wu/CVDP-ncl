@@ -57,7 +57,7 @@ function data_read_in(zpath:string,vn:string,yearS:integer,yearE:integer)
 local zpath,vn,cpath0,ta,tfiles,c,arr,farr,yearS,yearE,mocheck,fils_precc,fils_precl
 begin
   if (vn.eq."TS") then
-     vname = (/"TS","ts","sst","t_surf","skt"/)
+     vname = (/"TS","ts","sst","SST","t_surf","skt"/)
   end if
   if (vn.eq."PSL") then
      vname = (/"PSL","psl","slp","SLP","prmsl","msl","slp_dyn"/)
